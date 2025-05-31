@@ -2,24 +2,24 @@ spring:
   application:
     name: kafka-backend
 
-kafka:
-  bootstrap-server: localhost:9193 # assuming container name is kafka1
-  producer:
-    retries: 0
-    batch-size: 16384
-    buffer-memory: 33554432
-    key-serializer: org.apache.common.serialization.StringSerializer
-    value-serializer: org.apache.common.serialization.StringSerializer
-  consumer:
-    group-id: myGroup
-    auto-offset-reset: earliest
-    enable-auto-commit: false
-    auto-commit-interval: 100
-    key-serializer: org.apache.common.serialization.StringSerializer
-    value-serializer: org.apache.common.serialization.StringSerializer
-  listener:
-    missing-topics-fatal: false
-    ack-mode: manual_immediate # commit ngay l?p t?c khi g?i acknowledgement.acknowledge()
+  kafka:
+    bootstrap-servers: localhost:9193 # assuming container name is kafka1
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: myGroup
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      missing-topics-fatal: false
+      ack-mode: manual_immediate # commit ngay l?p t?c khi g?i acknowledgement.acknowledge()
   threads:
     virtual:
       enabled: true
