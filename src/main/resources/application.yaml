@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: kafka-backend
+
+kafka:
+  bootstrap-server: localhost:9193 # assuming container name is kafka1
+  producer:
+    retries: 0
+    batch-size: 16384
+    buffer-memory: 33554432
+    key-serializer: org.apache.common.serialization.StringSerializer
+    value-serializer: org.apache.common.serialization.StringSerializer
+  consumer:
+    group-id: myGroup
+    auto-offset-reset: earliest
+    enable-auto-commit: false
+    auto-commit-interval: 100
+    key-serializer: org.apache.common.serialization.StringSerializer
+    value-serializer: org.apache.common.serialization.StringSerializer
+  listener:
+    missing-topics-fatal: false
+    ack-mode: manual_immediate # commit ngay l?p t?c khi g?i acknowledgement.acknowledge()
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  port: 8888
