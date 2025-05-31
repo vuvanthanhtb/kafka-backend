@@ -19,7 +19,7 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     listener:
       missing-topics-fatal: false
-      ack-mode: manual_immediate # commit ngay l?p t?c khi g?i acknowledgement.acknowledge()
+      ack-mode: manual_immediate # a commit is performed immediately upon invoking acknowledgement.acknowledge()
   threads:
     virtual:
       enabled: true
